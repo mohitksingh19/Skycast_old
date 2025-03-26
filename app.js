@@ -12,7 +12,7 @@ const apiKey = "58a06b838add95f0278a43762325b0b3";  // Replace with your OpenWea
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 // Route to get weather data
