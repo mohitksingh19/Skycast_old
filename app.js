@@ -17,17 +17,13 @@ app.get('/', (req, res) => {
 
 // Route to get weather data
 app.get('/weather/:city', async (req, res) => {
-    const city = req.query.city;
-    if (!city) {
-        return res.status(400).json({ error: 'City name is required' });
-    }
-
+    const city = req.params.city;
     try {
-        const response = await axios.get(`${apiUrl}${city}&appid=${apiKey}`);
-        res.json(response.data);
+        // Fetch weather data from the API
+        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
+        res.json(response.data); // Send weather data as response
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to fetch weather data' });
+        res.status(500).send('Error fetching weather data.');
     }
 });
 
