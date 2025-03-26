@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const apiKey = "58a06b838add95f0278a43762325b0b3";  // Replace with your OpenWeatherMap API key
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Weather App! Use /weather/:city to get weather info.');
-});
+//app.get('/', (req, res) => {
+//    res.send('Welcome to the Weather App! Use /weather/:city to get weather info.');
+//});
 
 // Route to get weather data
 app.get('/weather/:city', async (req, res) => {
