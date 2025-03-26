@@ -18,6 +18,9 @@ app.get('/', (req, res) => {
 // Route to get weather data
 app.get('/weather/:city', async (req, res) => {
     const city = req.params.city;
+    if (!city) {
+        return res.status(400).json({ error: 'City name is required' });
+    }
     try {
         // Fetch weather data from the API
         const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
