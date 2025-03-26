@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // Route to get weather data
-app.get('/weather', async (req, res) => {
+app.get('/weather/:city', async (req, res) => {
     const city = req.query.city;
     if (!city) {
         return res.status(400).json({ error: 'City name is required' });
