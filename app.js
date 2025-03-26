@@ -5,7 +5,7 @@ const app = express();
 const port = 4000;
 
 // Serve static files from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // Weather API endpoint
 const apiKey = "58a06b838add95f0278a43762325b0b3";  // Replace with your OpenWeatherMap API key
