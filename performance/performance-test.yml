@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:4000'  # The URL of your application
+  phases:
+    - duration: 30  # Duration of the test in seconds
+      arrivalRate: 5  # Number of virtual users to simulate every second
+  defaults:
+    headers:
+      User-Agent: "Artillery"
+
+scenarios:
+  - flow:
+      - get:
+          url: "/api/weather?city=London"
