@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - echo Running OWASP Dependency-Check scan...
-      - dependency-check/bin/dependency-check.sh --project "NodeJS-App" --scan . --out dependency-check-report
+      - dependency-check/bin/dependency-check.sh --project "Skycast" --scan . --out dependency-check-report
   build:
     commands:
       - echo Building Node.js application...
