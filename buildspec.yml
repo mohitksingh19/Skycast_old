@@ -20,7 +20,7 @@ phases:
     commands:
       - echo Running OWASP Dependency-Check scan...
       - ls
-      - dependency-check/bin/dependency-check.sh --project "Skycast" --scan . --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
+      - dependency-check/bin/dependency-check.sh --project "MyProject" --scan . --nvdApiKey $NVD_API_KEY --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
       - ls -l build/
   build:
     commands:
