@@ -19,7 +19,7 @@ phases:
   pre_build:
     commands:
       - echo Running OWASP Dependency-Check scan...
-      - dependency-check/bin/dependency-check.sh --project "demo_server" --scan . --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=100&startIndex=0
+      - dependency-check/bin/dependency-check.sh --project "demo_server" --scan . --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=100&startIndex=0 --noupdate
       - ls -l build/
   build:
     commands:
