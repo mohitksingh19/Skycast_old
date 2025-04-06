@@ -17,7 +17,7 @@ phases:
   pre_build:
     commands:
       - echo Running OWASP Dependency-Check scan...
-      - echo "NVD API KEY $NVD_API_KEY"
+      - echo NVD API KEY $NVD_API_KEY
       - ls
       - dependency-check/bin/dependency-check.sh --project "MyProject" --scan . --nvdApiKey $NVD_API_KEY --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
   build:
