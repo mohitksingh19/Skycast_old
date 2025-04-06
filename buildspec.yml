@@ -20,7 +20,6 @@ phases:
       - echo "NVD API KEY $NVD_API_KEY"
       - ls
       - dependency-check/bin/dependency-check.sh --project "MyProject" --scan . --nvdApiKey $NVD_API_KEY --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
-      - ls -l build
   build:
     commands:
       - echo Building Node.js application...
@@ -29,5 +28,5 @@ phases:
     commands:
       - echo Build completed.
       - echo Dependency-Check report generated at dependency-check-report/dependency-check-report.html
-      - aws s3 cp Skycast/build/dependency-check-report.html s3://first-sonarqube/dependency-check-report.html
+      - aws s3 cp build/dependency-check-report.html s3://first-sonarqube/dependency-check-report.html
       - echo "Report uploaded to S3"
