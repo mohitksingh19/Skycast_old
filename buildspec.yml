@@ -14,14 +14,13 @@ phases:
       - curl -L https://github.com/dependency-check/DependencyCheck/releases/download/v12.1.0/dependency-check-12.1.0-release.zip -o dependency-check.zip
       - unzip dependency-check.zip
       - chmod +x dependency-check/bin/dependency-check.sh
-      #- aws s3 cp s3://first-sonarqube/nvd/ /tmp/nvd/ --recursive
-      - export DEPENDENCY_CHECK_NVD_DATA=/tmp/nvd
   pre_build:
     commands:
       - echo Running OWASP Dependency-Check scan...
+      - echo "NVD API KEY $NVD_API_KEY"
       - ls
-      - dependency-check/bin/dependency-check.sh --project "MyProject" --scan . --nvdApiKey $NVD_API_KEY --out build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
-      - ls -l build/
+      - dependency-check/bin/dependency-check.sh --project "MyProject" --scan . --nvdApiKey $NVD_API_KEY --out Skycast/build --nvdApiEndpoint https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=1000&startIndex=0
+      - ls -l Skycast/build
   build:
     commands:
       - echo Building Node.js application...
@@ -30,3 +29,5 @@ phases:
     commands:
       - echo Build completed.
       - echo Dependency-Check report generated at dependency-check-report/dependency-check-report.html
+      - aws s3 cp Skycast/build/dependency-check-report.html s3://first-sonarqube/dependency-check-report.html
+      - echo "Report uploaded to S3"
