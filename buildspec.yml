@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    NVD_API_KEY: 19f20687-a48d-4008-bec0-f77f385cc2b3
+    NVD_API_KEY: "19f20687-a48d-4008-bec0-f77f385cc2b3"
 
 phases:
   install:
